@@ -2,6 +2,10 @@ source 'https://rubygems.org'
  
  gem 'rails', '4.2.5'
  
+ gem 'devise'
+ 
+ gem 'bootstrap-sass'
+ 
  group :production do
    gem 'pg'
    gem 'rails_12factor'
@@ -10,6 +14,8 @@ source 'https://rubygems.org'
  group :development do
    gem 'sqlite3'
  end
+ 
+ gem 'figaro'
  
  # Use SCSS for stylesheets
  gem 'sass-rails', '~> 5.0'
