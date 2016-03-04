@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
   
   devise_for :users
-  default_url_options :host => "bloccitoff-cwilson04.c9users.io/"
+  # default_url_options :host => "bloccitoff-cwilson04.c9users.io/"
   
-  resources :users, only: :show
+  resources :users do
+    resources :items, only: [:create, :destroy]
+  end
   
   get 'welcome/index'
 
   get 'welcome/about'
   
-  root 'welcome#index'
+  root 'users#show'
   
 end
