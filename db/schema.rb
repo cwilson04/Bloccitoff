@@ -15,9 +15,10 @@ ActiveRecord::Schema.define(version: 20160224192446) do
 
   create_table "items", force: :cascade do |t|
     t.string   "description"
+    t.boolean  "completed",   default: false
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "items", ["user_id"], name: "index_items_on_user_id"

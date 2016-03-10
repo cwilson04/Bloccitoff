@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
     before_action :authenticate_user!
     
+    
     def create
         @user = User.find(params[:user_id])
         @item = @user.items.new(todo_params)
