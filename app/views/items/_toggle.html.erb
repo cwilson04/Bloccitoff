@@ -1,0 +1,6 @@
+<h4>Mark items as complete</h4>
+ <%= link_to "#{item.completed ? 'done' : 'pending'}", user_item_toggle_path(user, item), method: :put %>
+   <div class="form-group">
+     <%= f.check_box :completed, class: 'toggle' %>
+ <% end %>
+   </div>

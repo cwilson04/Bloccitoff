@@ -1,6 +1,24 @@
 class ItemsController < ApplicationController
     before_action :authenticate_user!
     
+    def toggle
+        @user = User.find(params[:user_id])
+        @item = @user.items.find(params[:item_id])
+        
+        @item.update_attribute(:completed, !@item.completed)
+        
+        #2
+        # @item.completed = !@item.completed
+        
+        # 1
+        # if @item.completed
+        #     @item.completed = false
+        # else
+        #     @item.completed = true
+        # end
+        # @item.save
+        redirect_to current_user
+    end
     
     def create
         @user = User.find(params[:user_id])
