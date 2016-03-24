@@ -7,31 +7,21 @@ class ItemsController < ApplicationController
         
         @item.update_attribute(:completed, !@item.completed)
         
-        #2
-        # @item.completed = !@item.completed
-        
-        # 1
-        # if @item.completed
-        #     @item.completed = false
-        # else
-        #     @item.completed = true
-        # end
-        # @item.save
         redirect_to current_user
     end
+    
     
     def create
         @user = User.find(params[:user_id])
         @item = @user.items.new(todo_params)
-        @item.user = current_user
-        
+        @item.expires_at = Time.now + 7.days
         if @item.save
             flash[:notice] = "Item was save successfully."
-            redirect_to current_user
         else
             flash[:alert] = "Item did not save. Please try again."
-            redirect_to current_user
+ 
         end
+        redirect_to current_user
     end
     
     def destroy

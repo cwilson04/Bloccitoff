@@ -2,7 +2,7 @@
 <div class="media">
    <div class="media-body">
      <small>
-         <p style="text-decoration: <%= item.completed ? 'line-through' : 'none'%>"><%= item.description %> - <%= distance_of_time_in_words(from_time = Time.now, 7.days.from_now) %><span><%= link_to "#{item.completed ? 'Make pending' : 'Complete'}", user_item_toggle_path(current_user, item), method: :put %></span> </p>
+         <p style="text-decoration: <%= item.completed ? 'line-through' : 'none'%>"><%= item.description %> - <%= distance_of_time_in_words(item.created_at, item.expires_at) %><span><%= link_to "#{item.completed ? 'Make pending' : 'Complete'}", user_item_toggle_path(current_user, item), method: :put %></span> </p>
          <%= link_to "Delete", [current_user, item], method: :delete, data: { confirm: 'Are you sure you want to delete this item?' } %>
      </small>
    </div>
